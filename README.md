@@ -1,6 +1,6 @@
 # video-inception
-使用Tensorflow進行影像讀取成TFRecord檔案
-Main function:test0402.py
+使用Tensorflow進行影像讀取成TFRecord檔案<br>
+Main function:test0402.py<br>
 Use Tensorflow to transform TFRecord data by jpeg encode.
 Fork By TensorFlow/models/inception 
 Using opencv to read phone data.
