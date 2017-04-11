@@ -7,6 +7,6 @@ Using opencv to read phone data.<br>
 Develop IDE tool: IntelliJ IDEA, vim<br>
 Notice:<br>
 1.Please use python 2.7.x version<br>
-2.Use pip to install tensorflow 0.9(I'm not sure it work on 1.0 or later)<br>
+2.Use pip to install tensorflow 1.0<br>
 3.Use Ubuntu 14.04(64 bit require)<br>
 4.I'm poor Taiwan student, maybe some function is not good as well. Piz tell me on Issues comments, Thanks ;)<br>
