@@ -20,7 +20,7 @@ from __future__ import print_function
 
 
 
-from inception.dataset import Dataset
+from dataset import Dataset
 
 
 class FlowersData(Dataset):
@@ -36,9 +36,9 @@ class FlowersData(Dataset):
   def num_examples_per_epoch(self):
     """Returns the number of examples in the data subset."""
     if self.subset == 'train':
-      return 3170
+      return 2693
     if self.subset == 'validation':
-      return 500
+      return 220
 
   def download_message(self):
     """Instruction to download and extract the tarball from Flowers website."""

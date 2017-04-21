@@ -21,8 +21,8 @@ from __future__ import print_function
 
 import tensorflow as tf
 
-from inception import inception_eval
-from inception.flowers_data import FlowersData
+import inception_eval
+from flowers_data import FlowersData
 
 FLAGS = tf.app.flags.FLAGS
 
