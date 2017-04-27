@@ -120,21 +120,24 @@ def _process_image_files_batch(coder, thread_index, ranges, name, filenames,
         video = cv2.VideoCapture(filename)
         while (video.get(cv2.cv.CV_CAP_PROP_FRAME_COUNT) > videoCount ):
             videoCount += 1
-
+            ret, frame = video.read()
             if ranges[thread_index][0] <= frame_counter < ranges[thread_index][1]:
                 # if counter < num_files_in_thread:
                 # Getting height and width.
                 height = int(video.get(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT))
                 width = int(video.get(cv2.cv.CV_CAP_PROP_FRAME_WIDTH))
-                ret, frame = video.read()
+
+                # cv2.imshow('img', frame)
+                # if cv2.waitKey(1) & 0xff == ord('q'):
+                #     break
                 # Do buffer works.
                 if frame is None:
                     lost_frame += 1
                     continue
                 image_buffer = _process_image(frame, coder)
-                # example = _convert_to_example(filename, image_buffer, label,
-                #                               text, height, width)
-                # writer.write(example.SerializeToString())
+                example = _convert_to_example(filename, image_buffer, label,
+                                              text, height, width)
+                writer.write(example.SerializeToString())
                 counter += 1
                 shard_counter += 1
                 # print counter
@@ -189,7 +192,7 @@ def _process_movie_files(name, filenames, labels, texts, num_shards):
         t = threading.Thread(target=_process_image_files_batch, args=args)
         t.start()
         threads.append(t)
-    # _process_image_files_batch(coder, 4, ranges, name, filenames, texts,
+    # _process_image_files_batch(coder, 1, ranges, name, filenames, texts,
     #                            labels, num_shards)
     coord.join(threads)
     print('%s: Finished writing all %d videos(%d frames) in data set.' % (
